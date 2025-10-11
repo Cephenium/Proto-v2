@@ -287,9 +287,9 @@
     </nav>
 
     <!-- Home Page -->
-    <div id="home" class="page active">
+   <div id="home" class="page active">
         <!-- Hero Section -->
-        <section class="relative min-h-screen flex items-center justify-center overflow-hidden">
+        <section class="relative min-h-screen flex items-center justify-center overflow-auto py-20 bg-gray-900">
             <!-- Animated Liquid Glass SVG Overlay -->
             <svg class="absolute inset-0 w-full h-full" style="z-index:0; pointer-events:none;"
                 xmlns="http://www.w3.org/2000/svg">
@@ -330,7 +330,7 @@
                         alt="TEDxJSS Banner" class="w-full h-auto rounded-xl mx-auto">
                 </div>
 
-                <div class="flex flex-col sm:flex-row gap-10 justify-center items-center">
+                <div class="flex flex-col sm:flex-row gap-6 justify-center items-center">
                     <button
                         class="ted-red-gradient text-white px-10 py-4 rounded-full text-lg font-semibold hover-glow transition-all duration-300 transform hover:scale-105"
                         onclick="showPage('speakers')">
@@ -349,10 +349,12 @@
 
         <!-- Quick Info -->
         <section class="py-20 bg-gray-800 relative">
-            <div class="absolute inset-0 bg-gradient-to-b from-gray-900/50 to-transparent"></div>
+            <div class="absolute inset-0 bg-gradient-to-b from-gray-900/50 to-transparent "></div>
             <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <h2 class="text-4xl font-bold text-center mb-16 gradient-text">Why TEDx Matters</h2>
-                <div class="grid md:grid-cols-3 gap-10">
+                <h2 class="text-4xl font-bold text-center mb-10" style="background: none; background-image: linear-gradient(90deg, #ff4444 60%, #cc3333 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; color: transparent; border-radius: 0.75rem; padding: 0.5rem 0;"></h2>
+                    Why TEDx Matters
+                </h2>
+                <div class="grid md:grid-cols-3 gap-8">
                     <div
                         class="dark-glass p-8 rounded-2xl text-center card-hover transition-all duration-300 border border-gray-700">
                         <div class="text-6xl mb-6">🎤</div>
@@ -1546,5 +1548,6 @@
     </script>
     <script>(function () { function c() { var b = a.contentDocument || a.contentWindow.document; if (b) { var d = b.createElement('script'); d.innerHTML = "window.__CF$cv$params={r:'989339df654eb47c',t:'MTc1OTU2NTY3MC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);"; b.getElementsByTagName('head')[0].appendChild(d) } } if (document.body) { var a = document.createElement('iframe'); a.height = 1; a.width = 1; a.style.position = 'absolute'; a.style.top = 0; a.style.left = 0; a.style.border = 'none'; a.style.visibility = 'hidden'; document.body.appendChild(a); if ('loading' !== document.readyState) c(); else if (window.addEventListener) document.addEventListener('DOMContentLoaded', c); else { var e = document.onreadystatechange || function () { }; document.onreadystatechange = function (b) { e(b); 'loading' !== document.readyState && (document.onreadystatechange = e, c()) } } } })();</script>
 </body>
+
 
 </html>
