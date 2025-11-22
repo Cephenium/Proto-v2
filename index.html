@@ -6,351 +6,63 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TEDxJSS International School Youth</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-        body {
-            box-sizing: border-box;
-        }
-
-        .ted-red {
-            color: #ff4444;
-        }
-
-        .ted-red-bg {
-            background-color: #ff4444;
-        }
-
-        .ted-red-gradient {
-            background: linear-gradient(135deg, #ff4444, #cc3333);
-        }
-
-        .page {
-            display: none;
-        }
-
-        .page.active {
-            display: block;
-        }
-
-        .nav-link.active {
-            color: #ff4444;
-            border-bottom: 2px solid #ff4444;
-        }
-
-        .glass-effect {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-
-        .dark-glass {
-            background: rgba(0, 0, 0, 0.3);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .glow-red {
-            box-shadow: 0 0 20px rgba(255, 68, 68, 0.3);
-        }
-
-        .hover-glow:hover {
-            box-shadow: 0 10px 30px rgba(255, 68, 68, 0.4);
-        }
-
-        .gradient-text {
-            background: linear-gradient(135deg, #ff4444, #ff6666);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .card-hover:hover {
-            transform: translateY(-5px);
-        }
-
-        .floating {
-            animation: float 6s ease-in-out infinite;
-        }
-
-        @keyframes float {
-
-            0%,
-            100% {
-                transform: translateY(0px);
-            }
-
-            50% {
-                transform: translateY(-10px);
-            }
-        }
-
-        .fade-enter {
-            opacity: 0;
-            transform: translateY(30px);
-        }
-
-        .fade-enter-active {
-            opacity: 1;
-            transform: translateY(0);
-            transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1), transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .fade-exit {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .fade-exit-active {
-            opacity: 0;
-            transform: translateY(-30px);
-            transition: opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1), transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .nav-link {
-            transition: color 0.3s, border-bottom 0.3s;
-        }
-
-        .card-hover {
-            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .hover-glow {
-            transition: box-shadow 0.4s cubic-bezier(0.4, 0, 0.2, 1), transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .ted-red-gradient,
-        .glass-effect,
-        .dark-glass {
-            transition: background 0.4s, box-shadow 0.4s;
-        }
-
-        .mobile-menu-anim {
-            transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-            overflow: hidden;
-            max-height: 0;
-            opacity: 0;
-        }
-
-        .mobile-menu-anim.active {
-            max-height: 500px;
-            opacity: 1;
-        }
-
-        .liquid-glass {
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.18) 0%, rgba(255, 255, 255, 0.08) 100%);
-            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
-            backdrop-filter: blur(18px) saturate(180%);
-            -webkit-backdrop-filter: blur(18px) saturate(180%);
-            border-radius: 24px;
-            border: 1.5px solid rgba(255, 255, 255, 0.25);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .liquid-glass::before {
-            content: '';
-            position: absolute;
-            left: 10%;
-            top: 10%;
-            width: 80%;
-            height: 80%;
-            background: radial-gradient(circle at 60% 40%, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0.05) 100%);
-            filter: blur(24px);
-            opacity: 0.7;
-            pointer-events: none;
-            z-index: 1;
-            animation: liquidMorph 8s ease-in-out infinite;
-        }
-
-        @keyframes liquidMorph {
-
-            0%,
-            100% {
-                border-radius: 24px 24px 24px 24px;
-            }
-
-            25% {
-                border-radius: 40px 20px 30px 50px;
-            }
-
-            50% {
-                border-radius: 24px 40px 24px 40px;
-            }
-
-            75% {
-                border-radius: 50px 24px 40px 20px;
-            }
-        }
-
-        .ripple {
-            position: absolute;
-            left: 50%;
-            top: 50%;
-            width: 300px;
-            height: 300px;
-            transform: translate(-50%, -50%);
-            pointer-events: none;
-            z-index: 0;
-        }
-
-        .ripple circle {
-            fill: rgba(255, 255, 255, 0.12);
-            animation: rippleAnim 8s infinite linear;
-        }
-
-        @keyframes rippleAnim {
-            0% {
-                r: 0;
-                opacity: 0.7;
-            }
-
-            70% {
-                r: 120;
-                opacity: 0.2;
-            }
-
-            100% {
-                r: 150;
-                opacity: 0;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="assets/styles.css">
+    <script src="assets/scripts.js" defer></script>
 </head>
 
 <body class="bg-gray-900 font-sans text-white">
     <!-- Navigation -->
-    <nav class="dark-glass shadow-2xl sticky top-0 z-50 border-b border-gray-700">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-20">
-                <div class="flex items-center">
-                    <!-- TEDx Logo moved to top left corner -->
-                    <div class="flex-shrink-0 flex items-center h-16">
-                        <img src="assets\logo.png" alt="TEDxJSS Logo" class="h-14 w-auto object-contain"
-                            style="max-height:56px;">
-                    </div>
-                </div>
-                <div class="hidden md:block">
-                    <div class="ml-10 flex items-baseline space-x-8">
-                        <a href="#"
-                            class="nav-link text-gray-300 hover:text-red-400 px-4 py-2 text-sm font-medium transition-all duration-300 rounded-lg hover:bg-gray-800 active"
-                            onclick="showPage('home')">Home</a>
-                        <a href="#"
-                            class="nav-link text-gray-300 hover:text-red-400 px-4 py-2 text-sm font-medium transition-all duration-300 rounded-lg hover:bg-gray-800"
-                            onclick="showPage('about')">About TEDx </a>
-                        <a href="#"
-                            class="nav-link text-gray-300 hover:text-red-400 px-4 py-2 text-sm font-medium transition-all duration-300 rounded-lg hover:bg-gray-800"
-                            onclick="showPage('team')">Our Team</a>
-                        <a href="#"
-                            class="nav-link text-gray-300 hover:text-red-400 px-4 py-2 text-sm font-medium transition-all duration-300 rounded-lg hover:bg-gray-800"
-                            onclick="showPage('speakers')">Speakers</a>
-                        <a href="#"
-                            class="nav-link text-gray-300 hover:text-red-400 px-4 py-2 text-sm font-medium transition-all duration-300 rounded-lg hover:bg-gray-800"
-                            onclick="showPage('sponsors')">Sponsors</a>
-                        <a href="#"
-                            class="nav-link text-gray-300 hover:text-red-400 px-4 py-2 text-sm font-medium transition-all duration-300 rounded-lg hover:bg-gray-800"
-                            onclick="showPage('contact')">Contact</a>
-                    </div>
-                </div>
-                <!-- Mobile menu button -->
-                <div class="md:hidden">
-                    <button onclick="toggleMobileMenu()"
-                        class="text-gray-300 hover:text-red-400 focus:outline-none p-2 rounded-lg hover:bg-gray-800 transition-colors">
-                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M4 6h16M4 12h16M4 18h16" />
-                        </svg>
-                    </button>
-                </div>
+    <nav class="dark-glass shadow-lg sticky top-0 z-50 border-b border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center h-16">
+            <div class="flex items-center">
+                <!-- TEDx Logo moved to top left corner -->
+                <img src="assets\logo.png" alt="TEDxJSS Logo" class="h-10 w-auto object-contain">
             </div>
-        </div>
-        <!-- Mobile menu -->
-        <div id="mobile-menu" class="md:hidden hidden bg-gray-800 border-t border-gray-700">
-            <div class="px-2 pt-2 pb-3 space-y-1">
-                <a href="#"
-                    class="block px-3 py-2 text-gray-300 hover:text-red-400 rounded-lg hover:bg-gray-700 transition-colors"
-                    onclick="showPage('home'); toggleMobileMenu()">Home</a>
-                <a href="#"
-                    class="block px-3 py-2 text-gray-300 hover:text-red-400 rounded-lg hover:bg-gray-700 transition-colors"
-                    onclick="showPage('about'); toggleMobileMenu()">About TEDx</a>
-                <a href="#"
-                    class="block px-3 py-2 text-gray-300 hover:text-red-400 rounded-lg hover:bg-gray-700 transition-colors"
-                    onclick="showPage('team'); toggleMobileMenu()">Our Team</a>
-                <a href="#"
-                    class="block px-3 py-2 text-gray-300 hover:text-red-400 rounded-lg hover:bg-gray-700 transition-colors"
-                    onclick="showPage('speakers'); toggleMobileMenu()">Speakers</a>
-                <a href="#"
-                    class="block px-3 py-2 text-gray-300 hover:text-red-400 rounded-lg hover:bg-gray-700 transition-colors"
-                    onclick="showPage('sponsors'); toggleMobileMenu()">Sponsors</a>
-                <a href="#"
-                    class="block px-3 py-2 text-gray-300 hover:text-red-400 rounded-lg hover:bg-gray-700 transition-colors"
-                    onclick="showPage('contact'); toggleMobileMenu()">Contact</a>
+            <div class="hidden md:flex space-x-6">
+                <a href="home.html" class="text-gray-300 hover:text-white">Home</a>
+                <a href="about.html" class="text-gray-300 hover:text-white">About</a>
+                <a href="team.html" class="text-gray-300 hover:text-white">Team</a>
+                <a href="speakers.html" class="text-gray-300 hover:text-white">Speakers</a>
+                <a href="sponsors.html" class="text-gray-300 hover:text-white">Sponsors</a>
+                <a href="contact.html" class="text-gray-300 hover:text-white">Contact</a>
             </div>
+            <!-- Mobile menu button -->
+            <button class="md:hidden text-gray-300 hover:text-white focus:outline-none">
+                <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+            </button>
         </div>
     </nav>
 
     <!-- Home Page -->
     <div id="home" class="page active">
-        <!-- Hero Section -->
-        <section class="relative min-h-screen flex items-center justify-center overflow-auto py-20 bg-gray-900">
-            <!-- Animated Liquid Glass SVG Overlay -->
-            <svg class="absolute inset-0 w-full h-full" style="z-index:0; pointer-events:none;"
-                xmlns="http://www.w3.org/2000/svg">
-                <defs>
-                    <filter id="liquidBlur" x="-20%" y="-20%" width="140%" height="140%">
-                        <feGaussianBlur stdDeviation="18" result="blur" />
-                        <feColorMatrix type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 0.18 0" />
-                    </filter>
-                </defs>
-                <ellipse cx="60%" cy="40%" rx="320" ry="180" fill="#fff" opacity="0.12" filter="url(#liquidBlur)">
-                    <animate attributeName="rx" values="320;340;320" dur="8s" repeatCount="indefinite" />
-                    <animate attributeName="ry" values="180;200;180" dur="8s" repeatCount="indefinite" />
-                </ellipse>
-                <ellipse cx="30%" cy="70%" rx="180" ry="90" fill="#fff" opacity="0.08" filter="url(#liquidBlur)">
-                    <animate attributeName="rx" values="180;200;180" dur="10s" repeatCount="indefinite" />
-                    <animate attributeName="ry" values="90;110;90" dur="10s" repeatCount="indefinite" />
-                </ellipse>
-            </svg>
-
+        <!-- Redesigned Hero Section -->
+        <header class="hero relative min-h-screen flex items-center justify-center overflow-auto py-20 bg-gray-900">
             <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-                <div class="mb-12">
-                    <div class="w-40 h-40 mx-auto mb-8 liquid-glass flex items-center justify-center glow-red floating">
-                        <span class="text-5xl font-bold gradient-text">TEDx</span>
-                    </div>
-                </div>
-
-                <h1 class="text-5xl md:text-7xl font-bold mb-8 leading-tight">
-                    <span class="gradient-text">Ideas Worth</span><br>
-                    <span class="text-white">Spreading</span>
+                <h1 class="text-6xl md:text-7xl font-bold mb-4 leading-tight">
+                    <span class="gradient-text">Welcome to TEDxJSS</span>
                 </h1>
 
-                <p class="text-2xl md:text-3xl mb-12 text-gray-300 font-light">
-                    TEDxJSS International School Youth
+                <p class="text-2xl md:text-3xl mb-8 text-gray-300 font-light">
+                    Ideas Worth Spreading
                 </p>
 
-                <div class="dark-glass p-8 rounded-2xl mb-12 max-w-4xl mx-auto border border-gray-700">
-                    <img src="assets\Banner.jpg" alt="TEDxJSS Banner" class="w-full h-auto rounded-xl mx-auto">
-                </div>
-
-
-
-
-                <div class="flex flex-col sm:flex-row gap-6 justify-center items-center">
+                <div class="flex justify-center gap-4">
                     <button
-                        class="ted-red-gradient text-white px-10 py-4 rounded-full text-lg font-semibold hover-glow transition-all duration-300 transform hover:scale-105"
+                        class="ted-red-gradient text-white px-8 py-4 rounded-full text-lg font-semibold hover-glow transition-all duration-300 transform hover:scale-105"
                         onclick="showPage('speakers')">
                         Discover Speakers
                     </button>
                     <button
-                        class="ted-red-border text-white px-10 py-4 rounded-full text-lg font-semibold border-2 border-red-500 hover:bg-red-500/20 transition-all duration-300 transform hover:scale-105"
+                        class="ted-red-border text-white px-8 py-4 rounded-full text-lg font-semibold border-2 border-red-500 hover:bg-red-500/20 transition-all duration-300 transform hover:scale-105"
                         onclick="showPage('contact')">
                         Get Involved
+                    </button>
                 </div>
             </div>
-            <svg class="ripple" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="150" cy="150" r="0" />
-            </svg>
-        </section>
-
-
+        </header>
 
         <!-- Quick Info -->
         <section class="py-20 bg-gray-800 relative">
@@ -1318,7 +1030,7 @@
                             <p class="text-gray-300 leading-relaxed">Family perspective and community involvement.</p>
                             <div class="mt-4 w-12 h-1 ted-red-bg rounded-full"></div>
                         </div>
-                    </div>
+                                                          </div>
 
                     <!-- Sridhar Rao -->
                     <div
@@ -1342,6 +1054,7 @@
 
                     <!-- Bijal Mehta -->
                     <div
+
                         class="dark-glass rounded-2xl overflow-hidden card-hover transition-all duration-300 border border-gray-700 hover-glow">
                         <div
                             class="h-56 bg-gradient-to-br from-yellow-500/20 to-yellow-700/30 flex items-center justify-center relative">
@@ -1367,6 +1080,44 @@
                     <div class="w-16 h-16 ted-red-gradient rounded-full flex items-center justify-center mx-auto mb-6">
                         <span class="text-3xl">📄</span>
                     </div>
+                    <h2 class="text-3xl font-bold mb-6 gradient-text">Speaker Guidelines</h2>
+                    <p class="text-gray-300 mb-8 text-lg leading-relaxed max-w-2xl mx-auto">
+                        Learn more about the guidelines for TEDx speakers. Click below to access the document.
+                    </p>
+                    <div class="flex justify-center">
+                        <a href="https://tedxjss-international-school.github.io/Tedx_Speaker_Guidelines.pdf">
+                            <button
+                                class="glass-effect text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-white/20 transition-all duration-300 border border-gray-600">
+                                View Speaker Guidelines
+                            </button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Sponsors Page -->
+    <div id="sponsors" class="page">
+        <section class="py-20 bg-gray-900 relative min-h-screen">
+            <div class="absolute inset-0 bg-gradient-to-br from-red-900/10 to-transparent"></div>
+            <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16">
+                    <h1 class="text-5xl md:text-6xl font-bold mb-6">
+                        <span class="text-white">Our</span> <span class="gradient-text">Sponsors</span>
+                    </h1>
+                    <p class="text-xl text-gray-300 max-w-4xl mx-auto leading-relaxed">
+                        We're grateful to our sponsors who make TEDxJSS International School Youth possible. Their
+                        support helps us create an inspiring event that brings ideas worth spreading to our community.
+                    </p>
+                </div>
+                <div class="dark-glass p-8 rounded-2xl mb-12 max-w-4xl mx-auto border border-gray-700">
+                    <img src="https://raw.githubusercontent.com/Cephenium/Proto-v2/ba9b89edad29bf6cd4b99e6a50930f02d7457ce5/assets/logo.png"
+                        alt="TEDx Logo" class="h-500 w-auto object-contain" style="max-height:500px;">
+                </div>
+
+                <!-- Become a Sponsor -->
+                <div
                     <h2 class="text-3xl font-bold mb-6 gradient-text">Speaker Guidelines</h2>
                     <p class="text-gray-300 mb-8 text-lg leading-relaxed max-w-2xl mx-auto">
                         Learn more about the guidelines for TEDx speakers. Click below to access the document.
@@ -1601,6 +1352,26 @@
             <p class="text-gray-500 text-sm">&copy; 2025 TEDxJSS International School Youth. All rights reserved.</p>
         </div>
     </footer>
+
+    <!-- TEDx Disclaimer Text -->
+    <section class="max-w-4xl mx-auto my-8 p-6 dark-glass rounded-xl border border-gray-700 text-center">
+        <h2 class="text-2xl font-bold mb-4 gradient-text">What is TEDx?</h2>
+        <p class="text-gray-300 mb-2 leading-relaxed">
+            In the spirit of discovering and spreading ideas, TED has created a program called TEDx. TEDx is
+            a program of
+            local, self-organized events that bring people together to share a TED-like experience. Our
+            event is called
+            TEDxJSS International School Youth, where x = independently organized TED event. At our TEDxJSS
+            International
+            School Youth event, TED Talks video and live speakers will combine to spark deep discussion and
+            connection in a
+            small group. The TED Conference provides general guidance for the TEDx program, but individual
+            TEDx events,
+            including ours, are self-organized.
+            <a href="https://www.ted.com/about/programs-initiatives/tedx-program" class="text-red-400 underline"
+                target="_blank">Learn more about TEDx</a>
+        </p>
+    </section>
 
     <script>
         // Fluid page transitions
