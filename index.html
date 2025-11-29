@@ -43,9 +43,9 @@
         }
 
         .dark-glass {
-            background: rgba(0, 0, 0, 0.3);
+            background: rgba(41, 36, 36, 0.286);
             backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(106, 83, 83, 0.305);
         }
 
         .glow-red {
@@ -141,7 +141,7 @@
             backdrop-filter: blur(18px) saturate(180%);
             -webkit-backdrop-filter: blur(18px) saturate(180%);
             border-radius: 24px;
-            border: 1.5px solid rgba(0, 0, 0, 0);
+            border: 1.5px solid rgba(153, 111, 111, 0.673);
             position: relative;
             overflow: hidden;
         }
@@ -213,19 +213,29 @@
                 opacity: 0;
             }
         }
+
+        /* Refactored inline styles into CSS classes */
+        .gradient-title {
+            background: linear-gradient(90deg, #ff4444 60%, #cc3333 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            color: transparent;
+            border-radius: 0.75rem;
+            padding: 0.5rem 0;
+        }
     </style>
 </head>
 
 <body class="bg-black font-sans text-white">
     <!-- Navigation -->
-    <nav class="dark-glass shadow-2xl sticky top-0 z-50 border-b border-gray-700">
+    <nav class="dark-glass shadow-2xl sticky top-0 z-50 border-b border-gray-700" role="navigation">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-20">
                 <div class="flex items-center">
-                    <!-- TEDx Logo moved to top left corner -->
+                    <!-- TEDx Logo -->
                     <div class="flex-shrink-0 flex items-center h-16">
-                        <img src="assets\logo.png" alt="TEDxJSS Logo" class="h-14 w-auto object-contain"
-                            style="max-height:56px;">
+                        <img src="assets/logo.png" alt="TEDxJSS Logo" class="h-14 w-auto object-contain">
                     </div>
                 </div>
                 <div class="hidden md:block">
@@ -235,7 +245,7 @@
                             onclick="showPage('home')">Home</a>
                         <a href="#"
                             class="nav-link text-gray-300 hover:text-red-400 px-4 py-2 text-sm font-medium transition-all duration-300 rounded-lg hover:bg-black-800"
-                            onclick="showPage('about')">About TEDx </a>
+                            onclick="showPage('about')">About TEDx</a>
                         <a href="#"
                             class="nav-link text-gray-300 hover:text-red-400 px-4 py-2 text-sm font-medium transition-all duration-300 rounded-lg hover:bg-black-800"
                             onclick="showPage('team')">Our Team</a>
@@ -252,11 +262,11 @@
                 </div>
                 <!-- Mobile menu button -->
                 <div class="md:hidden">
-                    <button onclick="toggleMobileMenu()"
+                    <button onclick="toggleMobileMenu()" aria-label="Toggle mobile menu"
                         class="text-gray-300 hover:text-red-400 focus:outline-none p-2 rounded-lg hover:bg-black-800 transition-colors">
                         <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M4 6h16M4 12h16M4 18h16" />
+                                d="M4 6h16M4 12h16m-7 6h7" />
                         </svg>
                     </button>
                 </div>
@@ -288,7 +298,7 @@
     </nav>
 
     <!-- Home Page -->
-    <div id="" class="page active">
+    <div id="home" class="page active">
         <!-- Hero Section -->
         <section class="relative min-h-screen flex items-center justify-center overflow-auto py-20 bg-black">
 
@@ -319,25 +329,17 @@
                         class="ted-red-border text-white px-10 py-4 rounded-full text-lg font-semibold border-2 border-red-500 hover:bg-red-500/20 transition-all duration-300 transform hover:scale-105"
                         onclick="showPage('contact')">
                         Get Involved
+                    </button>
                 </div>
             </div>
-            <svg class="ripple" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="150" cy="150" r="0" />
-            </svg>
+
         </section>
-
-
-
-        <!-- Quick Info -->
         <section class="py-20 bg-black-800 relative">
             <div class="absolute inset-0 bg-gradient-to-b from-gray-900/50 to-transparent ">
 
             </div>
             <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <h2 class="text-4xl font-bold text-center mb-10"
-                    style="background: none; background-image: linear-gradient(90deg, #ff4444 60%, #cc3333 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; color: transparent; border-radius: 0.75rem; padding: 0.5rem 0;">
-                    Event Details
-                </h2>
+                <h2 class="text-4xl font-bold text-center mb-10 gradient-title">Event Details</h2>
 
                 <div
                     class="dark-glass p-8 rounded-2xl text-center card-hover transition-all duration-300 border border-gray-700">
@@ -1101,7 +1103,72 @@
                         </div>
                     </div>
                 </div>
+                <!-- Student Volunteers -->
+                <div class="mb-16">
+                    <div class="flex items-center justify-center mb-12">
+                        <div class="w-14 h-14 ted-red-gradient rounded-full flex items-center justify-center mr-4">
+                            <span class="text-xl">🌟</span>
+                        </div>
+                        <h2 class="text-3xl font-bold gradient-text">Student Volunteers</h2>
+                    </div>
 
+                    <div class="grid md:grid-cols-4 lg:grid-cols-6 gap-6">
+                        <div
+                            class="dark-glass p-6 rounded-xl text-center border border-gray-700 card-hover transition-all duration-300">
+                            <div
+                                class="w-16 h-16 glass-effect rounded-full flex items-center justify-center mx-auto mb-3">
+                                <span class="text-2xl">👨‍🎓</span>
+                            </div>
+                            <h4 class="font-semibold text-white text-sm">Volunteer Name</h4>
+                            <p class="text-gray-400 text-xs mt-1">Grade 12</p>
+                        </div>
+                        <div
+                            class="dark-glass p-6 rounded-xl text-center border border-gray-700 card-hover transition-all duration-300">
+                            <div
+                                class="w-16 h-16 glass-effect rounded-full flex items-center justify-center mx-auto mb-3">
+                                <span class="text-2xl">👩‍🎓</span>
+                            </div>
+                            <h4 class="font-semibold text-white text-sm">Volunteer Name</h4>
+                            <p class="text-gray-400 text-xs mt-1">Grade 11</p>
+                        </div>
+                        <div
+                            class="dark-glass p-6 rounded-xl text-center border border-gray-700 card-hover transition-all duration-300">
+                            <div
+                                class="w-16 h-16 glass-effect rounded-full flex items-center justify-center mx-auto mb-3">
+                                <span class="text-2xl">👨‍🎓</span>
+                            </div>
+                            <h4 class="font-semibold text-white text-sm">Volunteer Name</h4>
+                            <p class="text-gray-400 text-xs mt-1">Grade 12</p>
+                        </div>
+                        <div
+                            class="dark-glass p-6 rounded-xl text-center border border-gray-700 card-hover transition-all duration-300">
+                            <div
+                                class="w-16 h-16 glass-effect rounded-full flex items-center justify-center mx-auto mb-3">
+                                <span class="text-2xl">👩‍🎓</span>
+                            </div>
+                            <h4 class="font-semibold text-white text-sm">Volunteer Name</h4>
+                            <p class="text-gray-400 text-xs mt-1">Grade 10</p>
+                        </div>
+                        <div
+                            class="dark-glass p-6 rounded-xl text-center border border-gray-700 card-hover transition-all duration-300">
+                            <div
+                                class="w-16 h-16 glass-effect rounded-full flex items-center justify-center mx-auto mb-3">
+                                <span class="text-2xl">👨‍🎓</span>
+                            </div>
+                            <h4 class="font-semibold text-white text-sm">Volunteer Name</h4>
+                            <p class="text-gray-400 text-xs mt-1">Grade 11</p>
+                        </div>
+                        <div
+                            class="dark-glass p-6 rounded-xl text-center border border-gray-700 card-hover transition-all duration-300">
+                            <div
+                                class="w-16 h-16 glass-effect rounded-full flex items-center justify-center mx-auto mb-3">
+                                <span class="text-2xl">👩‍🎓</span>
+                            </div>
+                            <h4 class="font-semibold text-white text-sm">Volunteer Name</h4>
+                            <p class="text-gray-400 text-xs mt-1">Grade 12</p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
     </div>
@@ -1109,196 +1176,10 @@
     <!-- Speakers Page -->
     <div id="speakers" class="page">
         <section class="py-20 bg-black-900 relative min-h-screen">
-            <div class="absolute inset-0 bg-gradient-to-br from-red-900/10 to-transparent"></div>
+            <div class="absolute inset-0 bg-gradient-to-b from-gray-900/50 to-transparent"></div>
             <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="text-center mb-16">
-                    <h1 class="text-5xl md:text-6xl font-bold mb-6">
-                        <span class="text-white">Our</span> <span class="gradient-text">Speakers</span>
-                    </h1>
-                    <p class="text-xl text-gray-300 max-w-4xl mx-auto leading-relaxed">
-                        Meet the inspiring individuals who will share their ideas, experiences, and insights at TEDxJSS
-                        International School Youth.
-                    </p>
-                </div>
-
-                <!-- Speaker Grid -->
-                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
-
-
-                    <!-- Guest Speakers -->
-                    <h2 class="text-3xl font-bold mb-6 text-white col-span-full">Guest Speakers</h2>
-
-                    <!-- Claudia Pinto -->
-                    <div
-                        class="dark-glass rounded-2xl overflow-hidden card-hover transition-all duration-300 border border-gray-700 hover-glow">
-                        <div
-                            class="h-56 bg-gradient-to-br from-red-500/20 to-red-700/30 flex items-center justify-center relative">
-                            <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
-                            <img src="assets/Speakers/Claudio.png"
-                                class="w-full max-w-full h-auto rounded-xl mx-auto object-contain">
-                        </div>
-                        <div class="p-6">
-                            <h3 class="text-2xl font-bold mb-2 text-white">Claudia Pinto</h3>
-                            <p class="text-red-400 mb-4 font-medium">CEO, Empowering Women; Philanthropy &
-                                Sustainability Advisor</p>
-                            <p class="text-gray-300 leading-relaxed">Leader in women empowerment and sustainability
-                                advising HH Sheikh
-                                Marwan bin Mohammed bin Rashid Al Maktoum.</p>
-                            <div class="mt-4 w-12 h-1 ted-red-bg rounded-full"></div>
-                        </div>
-                    </div>
-
-
-                    <!-- Samir Geepee -->
-                    <div
-                        class="dark-glass rounded-2xl overflow-hidden card-hover transition-all duration-300 border border-gray-700 hover-glow">
-                        <div
-                            class="h-56 bg-gradient-to-br from-indigo-500/20 to-indigo-700/30 flex items-center justify-center relative">
-                            <img src=" assets\Speakers\Samir.png" alt="sid pic">
-                        </div>
-                        <div class="p-6">
-                            <h3 class="text-2xl font-bold mb-2 text-white">Samir Geepee</h3>
-                            <p class="text-red-400 mb-4 font-medium">CEO, The Clarity Game</p>
-                            <p class="text-gray-300 leading-relaxed">Founder of a leadership development program and
-                                gamified coaching
-                                experience.</p>
-                            <div class="mt-4 w-12 h-1 ted-red-bg rounded-full"></div>
-                        </div>
-                    </div>
-
-                    <!-- Govindrao Naik -->
-                    <div
-                        class="dark-glass rounded-2xl overflow-hidden card-hover transition-all duration-300 border border-gray-700 hover-glow">
-                        <div
-                            class="h-56 bg-gradient-to-br from-teal-500/20 to-teal-700/30 flex items-center justify-center relative">
-                            <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
-
-                        </div>
-                        <div class="p-6">
-                            <h3 class="text-2xl font-bold mb-2 text-white">Govindrao Naik</h3>
-                            <p class="text-red-400 mb-4 font-medium">CEO, JSS</p>
-                            <p class="text-gray-300 leading-relaxed">Executive leader of the JSS organization.</p>
-                            <div class="mt-4 w-12 h-1 ted-red-bg rounded-full"></div>
-                        </div>
-                    </div>
-
-
-                    <!-- Parent Speakers -->
-                    <h2 class="text-3xl font-bold mb-6 text-white col-span-full">Parent Speakers</h2>
-
-                    <!-- Sivanathan Perumal -->
-                    <div
-                        class="dark-glass rounded-2xl overflow-hidden card-hover transition-all duration-300 border border-gray-700 hover-glow">
-                        <div
-                            class="h-56 bg-gradient-to-br from-pink-500/20 to-pink-700/30 flex items-center justify-center relative">
-                            <img src=" assets\Speakers\Sivananthan.png" alt="sid pic">
-                        </div>
-                        <div class="p-6">
-                            <h3 class="text-2xl font-bold mb-2 text-white">Sivanathan Perumal</h3>
-                            <p class="text-red-400 mb-4 font-medium">Parent (Shanu's parent)</p>
-                            <p class="text-gray-300 leading-relaxed">Family perspective and community involvement.</p>
-                            <div class="mt-4 w-12 h-1 ted-red-bg rounded-full"></div>
-                        </div>
-                    </div>
-
-                    <!-- Sridhar Rao -->
-                    <div
-                        class="dark-glass rounded-2xl overflow-hidden card-hover transition-all duration-300 border border-gray-700 hover-glow">
-                        <div
-                            class="h-56 bg-gradient-to-br from-gray-500/20 to-gray-700/30 flex items-center justify-center relative">
-                            \ <img src=" assets\Speakers\Sridhar.png" alt="sid pic">
-                        </div>
-                        <div class="p-6">
-                            <h3 class="text-2xl font-bold mb-2 text-white">Sridhar Rao</h3>
-                            <p class="text-red-400 mb-4 font-medium">Senior Project Manager, Dragon Oil</p>
-                            <p class="text-gray-300 leading-relaxed">Industry leader with expertise in large-scale
-                                projects.</p>
-                            <div class="mt-4 w-12 h-1 ted-red-bg rounded-full"></div>
-                        </div>
-                    </div>
-
-                    <!-- Bijal Mehta -->
-                    <div
-                        class="dark-glass rounded-2xl overflow-hidden card-hover transition-all duration-300 border border-gray-700 hover-glow">
-                        <div
-                            class="h-56 bg-gradient-to-br from-yellow-500/20 to-yellow-700/30 flex items-center justify-center relative">
-                            <img src=" assets\Speakers\Bijal.png" alt="sid pic">
-                        </div>
-                        <div class="p-6">
-                            <h3 class="text-2xl font-bold mb-2 text-white">Bijal Mehta</h3>
-                            <p class="text-red-400 mb-4 font-medium">Parent (Jash's parent)</p>
-                            <p class="text-gray-300 leading-relaxed">Community and family representative.</p>
-                            <div class="mt-4 w-12 h-1 ted-red-bg rounded-full"></div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Student Speakers -->
-                <h2 class="text-3xl font-bold mb-6 text-white col-span-full">Student Speakers</h2>
-
-                <!-- Eric Abraham -->
-                <div
-                    class="dark-glass rounded-2xl overflow-hidden card-hover transition-all duration-300 border border-gray-700 hover-glow">
-                    <div
-                        class="h-56 bg-gradient-to-br from-red-500/20 to-red-600/30 flex items-center justify-center relative">
-                        <img src=" assets\Speakers\Eric.png" alt="sid pic">
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-2xl font-bold mb-2 text-white">Eric Abraham</h3>
-                        <p class="text-red-400 mb-4 font-medium">Student</p>
-                        <p class="text-gray-300 leading-relaxed">Student speaker from JSS International School.</p>
-                        <div class="mt-4 w-12 h-1 ted-red-bg rounded-full"></div>
-                    </div>
-                </div>
-
-                <!-- Aisha Elham -->
-                <div
-                    class="dark-glass rounded-2xl overflow-hidden card-hover transition-all duration-300 border border-gray-700 hover-glow">
-                    <div
-                        class="h-56 bg-gradient-to-br from-blue-500/20 to-blue-600/30 flex items-center justify-center relative">
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
-                        <div class="relative z-10 w-28 h-28 glass-effect rounded-full flex items-center justify-center">
-                            <span class="text-4xl">🎓</span>
-                        </div>
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-2xl font-bold mb-2 text-white">Aisha Elham</h3>
-                        <p class="text-red-400 mb-4 font-medium">Student</p>
-                        <p class="text-gray-300 leading-relaxed">Student speaker sharing ideas from a youth
-                            perspective.</p>
-                        <div class="mt-4 w-12 h-1 ted-red-bg rounded-full"></div>
-                    </div>
-                </div>
-
-                <!-- Shubhan Naik -->
-                <div
-                    class="dark-glass rounded-2xl overflow-hidden card-hover transition-all duration-300 border border-gray-700 hover-glow">
-                    <div
-                        class="h-56 bg-gradient-to-br from-green-500/20 to-green-600/30 flex items-center justify-center relative">
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
-                        <div class="relative z-10 w-28 h-28 glass-effect rounded-full flex items-center justify-center">
-                            <span class="text-4xl">🎓</span>
-                        </div>
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-2xl font-bold mb-2 text-white">Shubhan Naik</h3>
-                        <p class="text-red-400 mb-4 font-medium">Student</p>
-                        <p class="text-gray-300 leading-relaxed">Student speaker presenting an inspiring youth talk.
-                        </p>
-                        <div class="mt-4 w-12 h-1 ted-red-bg rounded-full"></div>
-                    </div>
-                </div>
-
-
-
-
                 <!-- Speaker Guidelines -->
-                <div
-                    class="dark-glass p-10 rounded-3xl text-center border border-red-500/30 bg-gradient-to-br from-red-900/20 to-transparent hover-glow">
-                    <div class="w-16 h-16 ted-red-gradient rounded-full flex items-center justify-center mx-auto mb-6">
-                        <span class="text-3xl">📄</span>
-                    </div>
-                    <h2 class="text-3xl font-bold mb-6 gradient-text">Speaker Guidelines</h2>
+                <div class="text-center">
                     <p class="text-gray-300 mb-8 text-lg leading-relaxed max-w-2xl mx-auto">
                         Learn more about the guidelines for TEDx speakers. Click below to access the document.
                     </p>
@@ -1311,6 +1192,214 @@
                         </a>
                     </div>
                 </div>
+
+                <!-- Speaker Grid -->
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+
+                    <!-- Guest Speakers -->
+                    <h2 class="text-3xl font-bold mb-6 text-white col-span-full">Guest Speakers</h2>
+
+                    <!-- Claudia Pinto -->
+                    <div
+                        class="liquid-glass rounded-2xl overflow-hidden card-hover transition-all duration-300 border border-gray-700 hover:bg-red-700">
+                        <div class="relative bg-black">
+                            <img src="assets/Speakers/Claudio.png" class="w-full h-full object-cover">
+                            <div class="p-6 bg-red-500/80 absolute bottom-0 w-full h-32 flex flex-col justify-end">
+                                <h3 class="text-2xl font-bold mb-2 text-white">Claudia Pinto</h3>
+                                <p class="text-white mb-4 font-medium">CEO, Empowering Women; Philanthropy &
+                                    Sustainability Advisor
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Samir Geepee -->
+                    <div
+                        class="liquid-glass rounded-2xl overflow-hidden card-hover transition-all duration-300 border border-gray-700 hover:bg-red-700">
+                        <div class="relative bg-black">
+                            <img src="assets/Speakers/Samir.png" class="w-full h-full object-cover">
+                            <div class="p-6 bg-red-500/80 absolute bottom-0 w-full h-32 flex flex-col justify-end">
+                                <h3 class="text-2xl font-bold mb-2 text-white">Samir Geepee</h3>
+                                <p class="text-white mb-4 font-medium">CEO, The Clarity Game</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Govindrao Naik -->
+                    <div
+                        class="liquid-glass rounded-2xl overflow-hidden card-hover transition-all duration-300 border border-gray-700 hover:bg-red-700">
+                        <div class="relative bg-black">
+                            <img src="assets/Speakers/Govindrao.png" class="w-full h-full object-cover">
+                            <div class="p-6 bg-red-500/80 absolute bottom-0 w-full h-32 flex flex-col justify-end">
+                                <h3 class="text-2xl font-bold mb-2 text-white">Govindrao Naik</h3>
+                                <p class="text-white mb-4 font-medium">CEO, JSS</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Parent Speakers -->
+                    <h2 class="text-3xl font-bold mb-6 text-white col-span-full">Parent Speakers</h2>
+
+                    <!-- Sivanathan Perumal -->
+                    <div
+                        class="liquid-glass rounded-2xl overflow-hidden card-hover transition-all duration-300 border border-gray-700 hover:bg-red-700">
+                        <div class="relative bg-black">
+                            <img src="assets/Speakers/Sivananthan.png" class="w-full h-full object-cover">
+                            <div class="p-6 bg-red-500/80 absolute bottom-0 w-full h-32 flex flex-col justify-end">
+                                <h3 class="text-2xl font-bold mb-2 text-white">Sivanathan Perumal</h3>
+                                <p class="text-white mb-4 font-medium">Parent (Shanu's parent)</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Sridhar Rao -->
+                    <div
+                        class="liquid-glass rounded-2xl overflow-hidden card-hover transition-all duration-300 border border-gray-700 hover:bg-red-700">
+                        <div class="relative bg-black">
+                            <img src="assets/Speakers/Sridhar.png" class="w-full h-full object-cover">
+                            <div class="p-6 bg-red-500/80 absolute bottom-0 w-full h-32 flex flex-col justify-end">
+                                <h3 class="text-2xl font-bold mb-2 text-white">Sridhar Rao</h3>
+                                <p class="text-white mb-4 font-medium">Senior Project Manager, Dragon Oil</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Bijal Mehta -->
+                    <div
+                        class="liquid-glass rounded-2xl overflow-hidden card-hover transition-all duration-300 border border-gray-700 hover:bg-red-700">
+                        <div class="relative bg-black">
+                            <img src="assets/Speakers/Bijal.png" class="w-full h-full object-cover">
+                            <div class="p-6 bg-red-500/80 absolute bottom-0 w-full h-32 flex flex-col justify-end">
+                                <h3 class="text-2xl font-bold mb-2 text-white">Bijal Mehta</h3>
+                                <p class="text-white mb-4 font-medium">Parent (Jash's parent)</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Student Speakers -->
+                    <h2 class="text-3xl font-bold mb-6 text-white col-span-full">Student Speakers</h2>
+
+                    <!-- Eric Abraham -->
+                    <div
+                        class="liquid-glass rounded-2xl overflow-hidden card-hover transition-all duration-300 border border-gray-700 hover:bg-red-700">
+                        <div class="relative bg-black">
+                            <img src="assets/Speakers/Eric.png" class="w-full h-full object-cover">
+                            <div class="p-6 bg-red-500/80 absolute bottom-0 w-full h-32 flex flex-col justify-end">
+                                <h3 class="text-2xl font-bold mb-2 text-white">Eric Abraham</h3>
+                                <p class="text-white mb-4 font-medium">Student</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Aisha Elham -->
+                    <div
+                        class="liquid-glass rounded-2xl overflow-hidden card-hover transition-all duration-300 border border-gray-700 hover:bg-red-700">
+                        <div class="relative bg-black">
+                            <img src="assets/Speakers/Aisha.png" class="w-full h-full object-cover">
+                            <div class="p-6 bg-red-500/80 absolute bottom-0 w-full h-32 flex flex-col justify-end">
+                                <h3 class="text-2xl font-bold mb-2 text-white">Aisha Elham</h3>
+                                <p class="text-white mb-4 font-medium">Student</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Shubhan Naik -->
+                    <div
+                        class="liquid-glass rounded-2xl overflow-hidden card-hover transition-all duration-300 border border-gray-700 hover:bg-red-700">
+                        <div class="relative bg-black">
+                            <img src="assets/Speakers/Shubhan.png" class="w-full h-full object-cover">
+                            <div class="p-6 bg-red-500/80 absolute bottom-0 w-full h-32 flex flex-col justify-end">
+                                <h3 class="text-2xl font-bold mb-2 text-white">Shubhan Naik</h3>
+                                <p class="text-white mb-4 font-medium">Student</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <script>
+                    const speakers = {
+                        guest: [
+                            {
+                                name: "Claudia Pinto",
+                                role: "CEO, Empowering Women; Philanthropy & Sustainability Advisor",
+                                description: "Leader in women empowerment and sustainability advising HH Sheikh Marwan bin Mohammed bin Rashid Al Maktoum.",
+                                image: "assets/Speakers/Claudio.png"
+                            },
+                            {
+                                name: "Samir Geepee",
+                                role: "CEO, The Clarity Game",
+                                description: "Founder of a leadership development program and gamified coaching experience.",
+                                image: "assets/Speakers/Samir.png"
+                            },
+                            {
+                                name: "Govindrao Naik",
+                                role: "CEO, JSS",
+                                description: "Executive leader of the JSS organization.",
+                                image: "assets/Speakers/Govindrao.png"
+                            }
+                        ],
+                        parent: [
+                            {
+                                name: "Sivanathan Perumal",
+                                role: "Parent (Shanu's parent)",
+                                description: "Family perspective and community involvement.",
+                                image: "assets/Speakers/Sivananthan.png"
+                            },
+                            {
+                                name: "Sridhar Rao",
+                                role: "Senior Project Manager, Dragon Oil",
+                                description: "Industry leader with expertise in large-scale projects.",
+                                image: "assets/Speakers/Sridhar.png"
+                            },
+                            {
+                                name: "Bijal Mehta",
+                                role: "Parent (Jash's parent)",
+                                description: "Community and family representative.",
+                                image: "assets/Speakers/Bijal.png"
+                            }
+                        ],
+                        student: [
+                            {
+                                name: "Eric Abraham",
+                                role: "Student",
+                                description: "Student speaker from JSS International School.",
+                                image: "assets/Speakers/Eric.png"
+                            },
+                            {
+                                name: "Aisha Elham",
+                                role: "Student",
+                                description: "Student speaker sharing ideas from a youth perspective.",
+                                image: "assets/Speakers/Aisha.png"
+                            },
+                            {
+                                name: "Shubhan Naik",
+                                role: "Student",
+                                description: "Student speaker presenting an inspiring youth talk.",
+                                image: "assets/Speakers/Shubhan.png"
+                            }
+                        ]
+                    };
+
+                    function renderSpeakers(category, containerId) {
+                        const container = document.getElementById(containerId);
+                        const template = document.getElementById('speaker-card-template').content;
+
+                        speakers[category].forEach(speaker => {
+                            const card = template.cloneNode(true);
+                            card.querySelector('h3').textContent = speaker.name;
+                            card.querySelector('p:nth-of-type(1)').textContent = speaker.role;
+                            card.querySelector('p:nth-of-type(2)').textContent = speaker.description;
+                            card.querySelector('img').src = speaker.image;
+                            container.appendChild(card);
+                        });
+                    }
+
+                    document.addEventListener('DOMContentLoaded', () => {
+                        renderSpeakers('guest', 'guest-speakers');
+                        renderSpeakers('parent', 'parent-speakers');
+                        renderSpeakers('student', 'student-speakers');
+                    });
+                </script>
             </div>
         </section>
     </div>
@@ -1383,7 +1472,7 @@
                             </div>
                             <h2 class="text-3xl font-bold text-white">Get in Touch</h2>
                         </div>
-                        <form action="https://formspree.io/f/myznoyjl" method="POST">x
+                        <form action="https://formspree.io/f/myznoyjl" method="POST">
                             <div class="space-y-6">
                                 <div>
                                     <label class="block text-sm font-medium text-gray-300 mb-3">Name</label>
@@ -1442,8 +1531,8 @@
                                     </div>
                                 </div>
                                 <div class="flex items-center">
-                                    <span class="text-red-400 mr-4 text-xl">📧</span>
-                                    <span class="text-white">tedx.jssis25@gmail.com</span>
+                                    <span class="text-red-400 mr-4 text-xl">📧</span
+                                        class="text-white">tedx.jssis25@gmail.com</span>
                                 </div>
                                 <div class="flex items-center">
                                     <span class="text-red-400 mr-4 text-xl">📞</span>
