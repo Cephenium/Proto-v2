@@ -254,10 +254,10 @@
                             onclick="showPage('speakers')">Speakers</a>
                         <a href="#"
                             class="nav-link text-gray-300 hover:text-red-400 px-4 py-2 text-sm font-medium transition-all duration-300 rounded-lg hover:bg-black-800"
-                            onclick="showPage('sponsors')">Sponsors</a>
-                        <a href="#"
-                            class="nav-link text-gray-300 hover:text-red-400 px-4 py-2 text-sm font-medium transition-all duration-300 rounded-lg hover:bg-black-800"
                             onclick="showPage('contact')">Contact</a>
+                            <a href="#"
+                            class="nav-link text-gray-300 hover:text-red-400 px-4 py-2 text-sm font-medium transition-all duration-300 rounded-lg hover:bg-black-800"
+                            onclick="showPage('our event')">Our Event</a>
                     </div>
                 </div>
                 <!-- Mobile menu button -->
@@ -640,6 +640,116 @@
 
 
     <!-- Team Page -->
+    <!-- Our Event: TEDx Reel Making Competition -->
+    <div id="our event" class="page">
+        <section class="py-20 bg-black-900 relative min-h-screen">
+            <div class="absolute inset-0 bg-gradient-to-br from-red-900/10 to-transparent"></div>
+            <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-12">
+                    <h1 class="text-5xl md:text-6xl font-bold mb-6">
+                        <span class="gradient-text">Our Event</span>
+                        <span class="text-white"> — TEDx Reel Making Competition</span>
+                    </h1>
+                    <p class="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
+                        Calling all storytellers, filmmakers and creators! Produce a short reel (30–90 seconds)
+                        inspired by this year's theme "Breaking Silence: Voices That Need to Be Heard". Capture an
+                        idea, a moment, or a call-to-action — make it memorable.
+                    </p>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-8 mb-12">
+                    <div class="dark-glass p-8 rounded-2xl border border-gray-700 card-hover">
+                        <h3 class="text-2xl font-semibold mb-4 text-white">Who can enter?</h3>
+                        <p class="text-gray-300">Open to students of JSS International School (all grades). Teams of up to
+                            3 are allowed. Individual entries welcome.</p>
+                    </div>
+                    <div class="dark-glass p-8 rounded-2xl border border-gray-700 card-hover">
+                        <h3 class="text-2xl font-semibold mb-4 text-white">Format & Length</h3>
+                        <p class="text-gray-300">MP4 or MOV preferred. Length: 30 to 90 seconds. Caption and subtitles
+                            encouraged for accessibility.</p>
+                    </div>
+                </div>
+
+                <div class="dark-glass p-8 rounded-2xl border border-gray-700 mb-10">
+                    <h2 class="text-3xl font-bold mb-4 gradient-text">Competition Rules</h2>
+                    <ul class="list-disc list-inside text-gray-300 space-y-2">
+                        <li>Original work only. No copyrighted music or footage unless you have permission.</li>
+                        <li>Maximum length 90 seconds, minimum 30 seconds.</li>
+                        <li>One entry per person/team.</li>
+                        <li>Entries must relate to the event theme.</li>
+                        <li>By entering, you grant TEDxJSS permission to show your reel during the event and on our
+                            channels.</li>
+                    </ul>
+                </div>
+
+                <div class="grid md:grid-cols-3 gap-6 mb-12">
+                    <div class="dark-glass p-6 rounded-2xl border border-gray-700">
+                        <h4 class="text-xl font-semibold text-white mb-2">Timeline</h4>
+                        <p class="text-gray-300">Submissions open: Dec 1, 2025<br>Deadline: Jan 2, 2026<br>Winners
+                            announced: Jan 7, 2026</p>
+                    </div>
+                    <div class="dark-glass p-6 rounded-2xl border border-gray-700">
+                        <h4 class="text-xl font-semibold text-white mb-2">Prizes</h4>
+                        <p class="text-gray-300">1st: AED 1000 + feature at the event<br>2nd: AED 500<br>3rd:
+                            AED 250 + certificates</p>
+                    </div>
+                    <div class="dark-glass p-6 rounded-2xl border border-gray-700">
+                        <h4 class="text-xl font-semibold text-white mb-2">Judging Criteria</h4>
+                        <p class="text-gray-300">Creativity (30%), Relevance to theme (30%), Storytelling &
+                            Emotional impact (25%), Technical quality (15%)</p>
+                    </div>
+                </div>
+
+                <div class="dark-glass p-8 rounded-2xl border border-gray-700 mb-12">
+                    <h3 class="text-2xl font-semibold mb-4 text-white">How to Submit</h3>
+                    <ol class="list-decimal list-inside text-gray-300 space-y-2">
+                        <li>Upload your video to Google Drive, YouTube (unlisted) or Vimeo.</li>
+                        <li>Fill the submission form below with the direct share link and team details.</li>
+                        <li>If you prefer to submit a file, email the download link to <a
+                                href="mailto:submissions@tedxjss.org" class="text-red-400 underline">submissions@tedxjss.org</a>
+                            with subject "Reel Submission — [Team Name]".</li>
+                    </ol>
+
+                    <form id="reel-form" class="mt-6 grid md:grid-cols-2 gap-4" onsubmit="handleReelSubmit(event)">
+                        <input type="text" name="team" placeholder="Team / Creator name"
+                            class="p-3 rounded-lg bg-black/40 border border-gray-700 text-white" required>
+                        <input type="email" name="email" placeholder="Contact email"
+                            class="p-3 rounded-lg bg-black/40 border border-gray-700 text-white" required>
+                        <input type="text" name="school" placeholder="School / Grade (optional)"
+                            class="p-3 rounded-lg bg-black/40 border border-gray-700 text-white">
+                        <input type="url" name="video_url" placeholder="Video link (Google Drive / YouTube / Vimeo)"
+                            class="p-3 rounded-lg bg-black/40 border border-gray-700 text-white" required>
+                        <textarea name="notes" placeholder="Short description (1-2 lines)"
+                            class="p-3 rounded-lg bg-black/40 border border-gray-700 text-white col-span-2" rows="3"></textarea>
+                        <div class="col-span-2 text-right">
+                            <button type="submit"
+                                class="ted-red-gradient text-white px-6 py-3 rounded-full font-semibold">Submit
+                                Entry</button>
+                        </div>
+                    </form>
+
+                    <p class="text-sm text-gray-500 mt-4">Note: This form collects details only — after submission the
+                        organizers will contact you for file transfer if needed.</p>
+                </div>
+
+                <div class="dark-glass p-8 rounded-2xl border border-gray-700 mb-8">
+                    <h3 class="text-2xl font-semibold mb-4 text-white">Tips for a great reel</h3>
+                    <ul class="list-disc list-inside text-gray-300 space-y-2">
+                        <li>Hook the viewer in the first 3 seconds.</li>
+                        <li>Keep the message simple and focused.</li>
+                        <li>Use good lighting and clear audio.</li>
+                        <li>Add subtitles for accessibility.</li>
+                    </ul>
+                </div>
+
+                <div class="dark-glass p-6 rounded-2xl border border-gray-700">
+                    <h4 class="text-xl font-semibold text-white mb-2">Questions?</h4>
+                    <p class="text-gray-300">Contact the media team at <a href="mailto:media@tedxjss.org"
+                            class="text-red-400 underline">media@tedxjss.org</a> or speak to the organizing committee.</p>
+                </div>
+            </div>
+        </section>
+    </div>
     <div id="team" class="page">
         <section class="py-20 bg-black-900 relative min-h-screen">
             <div class="absolute inset-0 bg-gradient-to-br from-red-900/10 to-transparent"></div>
@@ -1804,6 +1914,24 @@
                 setTimeout(() => ripple.remove(), 700);
             });
         });
+
+        // Handle reel submission (client-side placeholder)
+        function handleReelSubmit(e) {
+            e.preventDefault();
+            const form = e.target;
+            const data = new FormData(form);
+            const team = data.get('team')?.trim();
+            const email = data.get('email')?.trim();
+            const video = data.get('video_url')?.trim();
+            if (!team || !email || !video) {
+                alert('Please provide team name, contact email and a video link before submitting.');
+                return;
+            }
+            // In a real deployment we'd POST this to a backend or a form endpoint.
+            // For now show a friendly confirmation and reset.
+            alert('Thanks ' + team + '! Your reel link has been received. We will contact you at ' + email + '.');
+            form.reset();
+        }
     </script>
     <script>(function () { function c() { var b = a.contentDocument || a.contentWindow.document; if (b) { var d = b.createElement('script'); d.innerHTML = "window.__CF$cv$params={r:'989339df654eb47c',t:'MTc1OTU2NTY3MC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);"; b.getElementsByTagName('head')[0].appendChild(d) } } if (document.body) { var a = document.createElement('iframe'); a.height = 1; a.width = 1; a.style.position = 'absolute'; a.style.top = 0; a.style.left = 0; a.style.border = 'none'; a.style.visibility = 'hidden'; document.body.appendChild(a); if ('loading' !== document.readyState) c(); else if (window.addEventListener) document.addEventListener('DOMContentLoaded', c); else { var e = document.onreadystatechange || function () { }; document.onreadystatechange = function (b) { e(b); 'loading' !== document.readyState && (document.onreadystatechange = e, c()) } } } })();</script>
 </body>
